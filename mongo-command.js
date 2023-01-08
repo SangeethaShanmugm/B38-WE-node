@@ -183,3 +183,7 @@ db.orders.aggregate([
 // 2. update language for all document
 // 3. Attitude is everything - update rating to 10
 // 4. Delete all books with rating < 8
+
+//find a document - name
+
+db.books.findOne({ name: "Charlotte's web" });
