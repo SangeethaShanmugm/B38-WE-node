@@ -179,10 +179,26 @@ db.orders.aggregate([
 ]);
 
 // Task
-// 1. include language - english for all documents
+// 1. include language - english for all documents ✅
 // 2. update language for all document
-// 3. Attitude is everything - update rating to 10
-// 4. Delete all books with rating < 8
+
+db.books.updateMany({}, { $set: { language: "english" } });
+
+//3. update the language as tamil for the Harry potter ✅
+
+db.books.updateOne({ name: "Harry potter" }, { $set: { language: "tamil" } });
+
+// 4. Attitude is everything - update rating to 10   ✅
+
+db.books.updateOne(
+  { name: "Attitude is everything" },
+  { $set: { rating: 10 } }
+);
+
+//5. Delete all books with rating < 8   ✅
+//db.books.find({ rating: { $lt: 8 } }).pretty()
+
+db.books.deleteMany({ rating: { $lt: 8 } });
 
 //find a document - name
 
