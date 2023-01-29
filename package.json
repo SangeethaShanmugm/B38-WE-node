@@ -20,6 +20,7 @@
   "homepage": "https://github.com/SangeethaShanmugm/B38-WE-node#readme",
   "description": "",
   "dependencies": {
+    "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "mongodb": "^4.13.0"
   },
