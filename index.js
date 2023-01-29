@@ -127,7 +127,27 @@ app.get("/books/:id", async (request, response) => {
   console.log(id);
   //   const book = books.findOne((bk) => bk.id == id);
   const book = await client.db("b38we").collection("books").findOne({ id: id });
+  book
+    ? response.send(book)
+    : response.status(404).send({ message: "No Books found" });
+});
+
+//delete id
+
+app.delete("/books/:id", async (request, response) => {
+  const { id } = request.params;
+  console.log(id);
+  //   const book = books.findOne((bk) => bk.id == id);
+  const book = await client
+    .db("b38we")
+    .collection("books")
+    .deleteOne({ id: id });
   response.send(book);
 });
 
 app.listen(PORT, () => console.log("Server started on port", PORT));
+
+//C -  CREATE -   POST
+//R -  READ   -   GET  ✅
+//U -  UPDATE -   PUT
+//D -  DELETE -   DELETE  ✅
