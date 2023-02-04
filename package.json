@@ -1,7 +1,7 @@
 {
   "name": "b38-we-node",
   "version": "1.0.0",
-  "main": "fileSystem.js",
+  "main": "index.js",
   "type": "module",
   "scripts": {
     "start": "node index.js",
