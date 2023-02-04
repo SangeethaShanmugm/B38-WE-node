@@ -1,1 +1,3 @@
-[{"name":"hello"},{"name":"hiii"}]
+MONGO_URL=mongodb+srv://sangeetha:sangeetha@cluster0.09bk9ld.mongodb.net/?retryWrites=true&w=majority
+PORT=9000
+
