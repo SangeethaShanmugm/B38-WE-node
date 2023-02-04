@@ -1,3 +1,11 @@
 MONGO_URL=mongodb+srv://sangeetha:sangeetha@cluster0.09bk9ld.mongodb.net/?retryWrites=true&w=majority
 PORT=9000
 
+
+
+
+//task
+// /books - all the books ✅
+// /books?language=english only english books ✅
+// /books?language=english&rating=8 -> filter by language and rating ✅
+// /books?rating=8  - only books with rating 8 ✅

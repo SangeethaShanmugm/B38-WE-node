@@ -4,7 +4,7 @@
 import express from "express";
 import { MongoClient } from "mongodb";
 import * as dotenv from "dotenv";
-
+import { booksRouter } from "./routes/books.js";
 dotenv.config();
 
 // console.log(process.env);
@@ -98,7 +98,7 @@ async function createConnection() {
   console.log("MongoDB is connected");
   return client;
 }
-const client = await createConnection();
+export const client = await createConnection();
 
 //Rest API endpoints
 //req - what we sent to server
@@ -107,72 +107,6 @@ app.get("/", (request, response) => {
   response.send("Hello Everyone have a great day🥳🥳😉😉");
 });
 
-//task
-// /books - all the books ✅
-// /books?language=english only english books ✅
-// /books?language=english&rating=8 -> filter by language and rating ✅
-// /books?rating=8  - only books with rating 8 ✅
-
-//get books
-app.get("/books", async (request, response) => {
-  const { language, rating } = request.query;
-  console.log(request.query, language);
-  // let filteredBooks = books;
-  // if (language) {
-  //   filteredBooks = filteredBooks.filter((bk) => bk.language == language);
-  // }
-  if (request.query.rating) {
-    request.query.rating = +request.query.rating;
-  }
-  //   const book = books.filter((bk) => bk.language == language);
-  const book = await client
-    .db("b38we")
-    .collection("books")
-    .find(request.query)
-    .toArray();
-  response.send(book);
-});
-
-//get book by ID
-app.get("/books/:id", async (request, response) => {
-  const { id } = request.params;
-  console.log(id);
-  //   const book = books.findOne((bk) => bk.id == id);
-  const book = await client.db("b38we").collection("books").findOne({ id: id });
-  book
-    ? response.send(book)
-    : response.status(404).send({ message: "No Books found" });
-});
-
-//delete id
-
-app.delete("/books/:id", async (request, response) => {
-  const { id } = request.params;
-  console.log(id);
-  //   const book = books.findOne((bk) => bk.id == id);
-  const book = await client
-    .db("b38we")
-    .collection("books")
-    .deleteOne({ id: id });
-  response.send(book);
-});
-
-//Add books
-//inbuilt middleware
-//say data is in json
-app.post("/books", async (request, response) => {
-  const newBook = request.body;
-  console.log(newBook);
-  const result = await client
-    .db("b38we")
-    .collection("books")
-    .insertMany(newBook);
-  response.send(result);
-});
+app.use("/books", booksRouter);
 
 app.listen(PORT, () => console.log("Server started on port", PORT));
-
-//C -  CREATE -   POST  ✅
-//R -  READ   -   GET  ✅
-//U -  UPDATE -   PUT
-//D -  DELETE -   DELETE  ✅
