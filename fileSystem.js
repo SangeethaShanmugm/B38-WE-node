@@ -36,7 +36,7 @@ fs.writeFile("./note.txt", JSON.stringify(data), (err) => {
   console.log("Completed writing");
 });
 
-const [, , noofFiles] = process.argv;
+// const [, , noofFiles] = process.argv;
 // console.log(noofFiles);
 const quote3 = "Hello Everyone";
 //Task 2
@@ -89,8 +89,8 @@ for (let i = 1; i <= 10; i++) {
   });
 }
 
-const [, , noofFiles] = process.argv;
-const quote3 = "Hello Everyone";
+// const [, , noofFiles] = process.argv;
+// const quote3 = "Hello Everyone";
 
 for (let i = 1; i <= noofFiles; i++) {
   fs.writeFileSync(`./backup/text-${i}.html`, quote3);
