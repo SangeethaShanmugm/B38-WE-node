@@ -5,6 +5,7 @@ import express from "express";
 import { MongoClient } from "mongodb";
 import * as dotenv from "dotenv";
 import { booksRouter } from "./routes/books.js";
+import { usersRouter } from "./routes/users.js";
 dotenv.config();
 
 // console.log(process.env);
@@ -108,5 +109,7 @@ app.get("/", (request, response) => {
 });
 
 app.use("/books", booksRouter);
+
+app.use("/users", usersRouter);
 
 app.listen(PORT, () => console.log("Server started on port", PORT));
