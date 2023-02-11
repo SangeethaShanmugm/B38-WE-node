@@ -4,15 +4,19 @@
 import express from "express";
 import { MongoClient } from "mongodb";
 import * as dotenv from "dotenv";
+import cors from "cors";
 import { booksRouter } from "./routes/books.js";
 import { usersRouter } from "./routes/users.js";
 dotenv.config();
 
 // console.log(process.env);
+
 const app = express();
+app.use(cors());
 const PORT = process.env.PORT;
 //interceptor  || converting body to json
 app.use(express.json());
+
 // const books = [
 //   {
 //     id: "1",
