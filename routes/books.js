@@ -6,7 +6,7 @@ import {
   AddBook,
   updateBookByID,
 } from "../helper.js";
-
+import { auth } from "../middleware/auth.js";
 const router = express.Router();
 
 //get books
